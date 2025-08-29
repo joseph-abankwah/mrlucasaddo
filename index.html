@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en" class="light-theme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Memoriam | Mr Lucas Brako Addo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js">
+    <style>
+        :root {
+            --primary-dark: #1a202c; /* New: Deeper Navy */
+            --primary-light: #f3f4f6; /* New: Softer Light Gray */
+            --accent-silver-blue: #a8b0c0; /* New: Silver-blue accent */
+            --text-dark: #2d3748; /* New: Slate Gray */
+            --text-light: #e2e8f0; /* New: Off-white */
+            --shadow-soft: 0 4px 30px rgba(0, 0, 0, 0.1);
+            --shadow-deep: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @font-face {
+            font-family: 'Memorial Serif';
+            src: url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+        }
+
+        @font-face {
+            font-family: 'Elegant Sans';
+            src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
+        }
+
+        body {
+            font-family: 'Elegant Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--primary-light);
+            transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+            overflow-x: hidden;
+        }
+
+        .dark-theme {
+            color: var(--text-light);
+            background: var(--primary-dark);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(26, 32, 44, 0.9) 0%, rgba(26, 32, 44, 0.6) 100%);
+        }
+
+        .dark-theme .hero-gradient {
+            background: linear-gradient(135deg, rgba(243, 244, 246, 0.8) 0%, rgba(243, 244, 246, 0.5) 100%);
+        }
+
+        .ornamental-divider {
+            position: relative;
+            height: 80px;
+            overflow: hidden;
+        }
+
+        .ornamental-divider::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23a8b0c0"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.68,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23a8b0c0"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23a8b0c0"/></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: rotate(180deg);
+        }
+
+        .dark-theme .ornamental-divider::before {
+            opacity: 0.8;
+        }
+
+        .memorial-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(168, 176, 192, 0.3);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+        }
+
+        .dark-theme .memorial-card {
+            background: rgba(26, 32, 44, 0.85);
+            border: 1px solid rgba(168, 176, 192, 0.5);
+        }
+
+        .memorial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-deep);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-silver-blue);
+            border: 3px solid var(--primary-light);
+        }
+
+        .dark-theme .timeline-item::before {
+            border-color: var(--primary-dark);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floral-corner {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            opacity: 0.15;
+        }
+
+        .floral-corner-tl {
+            top: 0;
+            left: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30,10 Q50,30,70,10 Q90,30,70,50 Q90,70,70,90 Q50,70,30,90 Q10,70,30,50 Q10,30,30,10" fill="%23a8b0c0"/></svg>');
+        }
+
+        .floral-corner-br {
+            bottom: 0;
+            right: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30,10 Q50,30,70,10 Q90,30,70,50 Q90,70,70,90 Q50,70,30,90 Q10,70,30,50 Q10,30,30,10" fill="%23a8b0c0"/></svg>');
+        }
+
+        .hover-zoom {
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .hover-zoom:hover {
+            transform: scale(1.03);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fadein {
+            animation: fadeIn 1s forwards;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+
+        /* Lightbox CSS */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body class="opacity-0">
+    <div id="lightbox" class="lightbox">
+        <span id="lightbox-close" class="lightbox-close">×</span>
+        <img id="lightbox-image" class="lightbox-content">
+    </div>
+
+    <div class="fixed top-4 right-4 z-50">
+        <button id="theme-toggle" class="p-2 rounded-full bg-white/80 shadow-lg backdrop-blur-sm dark:bg-gray-800/80">
+            <i class="fas fa-moon dark:hidden text-gray-700"></i>
+            <i class="fas fa-sun hidden dark:block text-yellow-200"></i>
+        </button>
+    </div>
+
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="images/bg.jpg" 
+                 alt="Mr Lucas Brako Addo walking through a sunlit garden at golden hour, wearing a suit with a wide-brimmed hat, surrounded by blooming roses" 
+                 class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 animate-fadein">
+            <div class="flex flex-col items-center">
+                <div class="w-24 h-1 bg-accent-silver-blue mb-6"></div>
+                <h1 class="text-5xl md:text-7xl font-serif font-light tracking-wider text-white dark:text-gray-900 mb-2">Mr Lucas</h1>
+                <h2 class="text-6xl md:text-8xl font-serif font-bold text-white dark:text-gray-900 mb-4">Brako Addo</h2>
+                <div class="w-24 h-1 bg-accent-silver-blue mt-6"></div>
+            </div>
+            <p class="mt-8 text-xl text-white dark:text-gray-900 font-light tracking-wider">
+                1944 A.B — 13th July 2025
+            </p>
+        </div>
+
+        <div class="absolute bottom-0 left-0 right-0 ornamental-divider"></div>
+        <div class="absolute top-0 left-0 right-0 ornamental-divider rotate-180"></div>
+    </section>
+
+    <section class="py-20 bg-white dark:bg-gray-900 relative">
+        <div class="container mx-auto px-6 max-w-5xl animate-fadein delay-100">
+            <div class="memorial-card rounded-lg p-8 md:p-12 relative overflow-hidden">
+                <div class="floral-corner floral-corner-tl"></div>
+                <div class="floral-corner floral-corner-br"></div>
+                
+                <div class="flex flex-col items-center text-center mb-12">
+                    <img src="images/him.jpg" 
+                         alt="Close-up portrait of Mr Lucas Brako Addo - A graceful man with silver-white hair styled in soft waves, piercing blue eyes, wearing a pearl necklace and elegant cream blouse" 
+                         class="w-48 h-48 md:w-56 md:h-56 rounded-full border-4 border-white dark:border-gray-800 object-cover shadow-xl hover-zoom mb-8">
+                    
+                    <h3 class="text-3xl font-serif font-medium text-gray-800 dark:text-white mb-4">In Loving Memory</h3>
+                    <div class="w-20 h-0.5 bg-accent-silver-blue my-4"></div>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl">
+                        Mr Lucas Brako Addo, a beacon of grace and kindness, passed away peacefully at his home in Accra on 13th July 2025, surrounded by his loving family. Born in 1944 in Accra, Ghana, Mr Lucas lived a life rich in love, and service to others.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 mt-12">
+                    <div class="text-center">
+                        <div class="text-5xl font-serif text-accent-silver-blue mb-2">81</div>
+                        <div class="text-sm uppercase tracking-wider text-gray-500">Years Lived</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl font-serif text-accent-silver-blue mb-2">56</div>
+                        <div class="text-sm uppercase tracking-wider text-gray-500">Years Married</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl font-serif text-accent-silver-blue mb-2">15</div>
+                        <div class="text-sm uppercase tracking-wider text-gray-500">Grandchildren</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16 animate-fadein delay-200">
+                <h2 class="text-4xl font-serif font-medium text-gray-800 dark:text-white mb-4">His Beautiful Story</h2>
+                <div class="w-20 h-0.5 bg-accent-silver-blue mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="animate-fadein delay-300">
+                    <div class="memorial-card rounded-lg p-8 h-full hover-zoom">
+                        <h3 class="text-2xl font-serif text-gray-800 dark:text-white mb-4">Early Years</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Mr Lucas Brako Addo was born to the late Mr. Robert Oppong Brako and Madam Felicia Tenkoramaa in Accra, Ghana. He grew up surrounded by a strong family and developed a passion for justice at an early age. He attended [High School Name] where he graduated as valedictorian before earning a scholarship to study criminal justice at [College Name].
+                        </p>
+                        <div class="mt-6">
+                            <img src="images/mf.jpg" 
+                                 alt="Vintage black-and-white photo of young Lucas as a child with a law book" 
+                                 class="w-full h-48 object-cover rounded-lg">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-fadein delay-400">
+                    <div class="memorial-card rounded-lg p-8 h-full hover-zoom">
+                        <h3 class="text-2xl font-serif text-gray-800 dark:text-white mb-4">Life's Work</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            As a novice officer, he began his career at the Federal Prisons Unit in Lorton, Virginia, where he was recognized as a beacon of fairness and hope for inmates. He was honored for his exemplary work with a special award on 28th March, 1992.
+                        </p>
+                        <div class="mt-6">
+                            <img src="images/cert.jpg" 
+                                 alt="Lucas at a federal building, speaking passionately to a crowd while gesturing toward a prison reform proposal" 
+                                 class="w-full h-48 object-cover rounded-lg">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-fadein delay-500">
+                    <div class="memorial-card rounded-lg p-8 h-full hover-zoom">
+                        <h3 class="text-2xl font-serif text-gray-800 dark:text-white mb-4">Family & Legacy</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Mr. Lucas was a devoted husband to his widow, Mrs. Comfort Brako Addo, and a loving father to his children. He cherished his 15 grandchildren and his many nieces, nephews, and in-laws. His greatest legacy is the family he built, united by his love and guidance.
+                        </p>
+                        <div class="mt-6">
+                            <img src="images/dm.jpg" 
+                                 alt="Mr Lucas Brako Addo surrounded by his entire family on the porch of their home during Christmas, all wearing matching pajamas" 
+                                 class="w-full h-48 object-cover rounded-lg">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-fadein delay-300">
+                    <div class="memorial-card rounded-lg p-8 h-full hover-zoom">
+                        <h3 class="text-2xl font-serif text-gray-800 dark:text-white mb-4">Final Years</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            In his later years, Mr Lucas Brako Addo became known for his community outreach programs in prisons. Diagnosed with [Illness] in [Year], he continued his work with adaptive tools until his final days. His memoir "[Memoir Title]" was published posthumously.
+                        </p>
+                        <div class="mt-6">
+                            <img src="images/ma.jpg" 
+                                 alt="Lucas in his office during his final year, surrounded by awards and documents" 
+                                 class="w-full h-48 object-cover rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-6 max-w-5xl animate-fadein delay-400">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-medium text-gray-800 dark:text-white mb-4">A Life in Pictures</h2>
+                <div class="w-20 h-0.5 bg-accent-silver-blue mx-auto mb-6"></div>
+                <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Watch this moving tribute celebrating Mr Lucas Brako Addo's extraordinary journey
+                </p>
+            </div>
+
+            <div class="memorial-card rounded-lg overflow-hidden hover-zoom">
+                <div class="video-container">
+                    <iframe src="images/VID-20250826-WA0008.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-medium text-gray-800 dark:text-white mb-4">Gallery of Memories</h2>
+                <div class="w-20 h-0.5 bg-accent-silver-blue mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-wrap justify-center space-x-2 sm:space-x-4 mb-8">
+                <button class="filter-btn text-gray-700 dark:text-gray-300 font-medium py-2 px-4 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 active-filter" data-filter="all">All</button>
+                <button class="filter-btn text-gray-700 dark:text-gray-300 font-medium py-2 px-4 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300" data-filter="wife">Wife</button>
+                <button class="filter-btn text-gray-700 dark:text-gray-300 font-medium py-2 px-4 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300" data-filter="children">Children</button>
+                <button class="filter-btn text-gray-700 dark:text-gray-300 font-medium py-2 px-4 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300" data-filter="grandchildren">Grandchildren</button>
+                <button class="filter-btn text-gray-700 dark:text-gray-300 font-medium py-2 px-4 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300" data-filter="family">Family</button>
+            </div>
+
+            <div id="gallery-container" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="wife">
+                    <img src="images/wife.jpg" alt="A photo of Lucas and his wife standing together by a fire" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="wife">
+                    <img src="images/ww.jpg" alt="A photo of Lucas and his wife dancing under string lights in the garden" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="wife">
+                    <img src="images/w.jpg" alt="Black and white wedding photo of Lucas and his wife dancing under string lights in the garden" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="wife">
+                    <img src="images/wif.jpg" alt="Black and white wedding photo of Lucas and his wife dancing under string lights in the garden" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="children">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-8cb4-8c90b84f3992.png" alt="Lucas teaching a class to children at a community center" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="children">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-b258-0058b7389146.png" alt="A photo of Lucas' daughter dancing at his office party" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="children">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-9c59-d2d415d862f9.png" alt="A photo of Lucas and his children playing ball in the park" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="children">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-8929-2f25d0026e15.png" alt="Mr Lucas Brako Addo surrounded by his entire family on the porch of their home during Christmas, all wearing matching pajamas" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="grandchildren">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-ac9c-2b2cead22fbd.png" alt="Lucas with his grandchildren" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="grandchildren">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-ac9c-2b2cead22fbd.png" alt="Lucas with his grandchildren" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="grandchildren">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-ac9c-2b2cead22fbd.png" alt="Lucas with his grandchildren" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="grandchildren">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-ac9c-2b2cead22fbd.png" alt="Lucas with his grandchildren" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="family">
+                    <img src="images/ma.jpg" alt="Mr Lucas Brako Addo surrounded by his entire family on the porch of their home during Christmas, all wearing matching pajamas" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="family">
+                    <img src="images/fam.jpg" alt="Lucas receiving an award from the governor with his wife proudly looking on" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="family">
+                    <img src="images/dm.jpg" alt="Lucas's last birthday party with his entire family gathered around the piano singing" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg hover-zoom cursor-pointer" data-category="family">
+                    <img src="images/ff.jpg" alt="Lucas with his friends in their historic garden" class="w-full h-64 object-cover transform transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16 animate-fadein delay-500">
+                <h2 class="text-4xl font-serif font-medium text-gray-800 dark:text-white mb-4">Timeline of His Life</h2>
+                <div class="w-20 h-0.5 bg-accent-silver-blue mx-auto"></div>
+            </div>
+
+            <div class="relative pl-12">
+                <div class="absolute left-0 top-0 h-full w-0.5 bg-gray-300 dark:bg-gray-600 ml-2"></div>
+                
+                <div class="mb-16 timeline-item relative">
+                    <div class="memorial-card rounded-lg p-6 hover-zoom">
+                        <div class="text-accent-silver-blue font-medium mb-2">1944</div>
+                        <h3 class="text-xl font-serif text-gray-800 dark:text-white mb-2">Born in Accra, Ghana</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Mr Lucas Brako Addo was born to the late Mr. Robert Oppong Brako and Madam Felicia Tenkoramaa.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mb-16 timeline-item relative">
+                    <div class="memorial-card rounded-lg p-6 hover-zoom">
+                        <div class="text-accent-silver-blue font-medium mb-2">1992</div>
+                        <h3 class="text-xl font-serif text-gray-800 dark:text-white mb-2">Won a Special Award</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            He was honored with an award for his exemplary work as a novice officer in Lorton, Virginia.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mb-16 timeline-item relative">
+                    <div class="memorial-card rounded-lg p-6 hover-zoom">
+                        <div class="text-accent-silver-blue font-medium mb-2">1970</div>
+                        <h3 class="text-xl font-serif text-gray-800 dark:text-white mb-2">Marriage</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Married Mrs Comfort Brako Addo in a ceremony at Adabraka.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mb-16 timeline-item relative">
+                    <div class="memorial-card rounded-lg p-6 hover-zoom">
+                        <div class="text-accent-silver-blue font-medium mb-2">1991</div>
+                        <h3 class="text-xl font-serif text-gray-800 dark:text-white mb-2">Most Likely to Succeed</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Received the Outstanding Novice Officer for Lifetime Achievement in Law Enforcement.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item relative">
+                    <div class="memorial-card rounded-lg p-6 hover-zoom">
+                        <div class="text-accent-silver-blue font-medium mb-2">13th July 2025</div>
+                        <h3 class="text-xl font-serif text-gray-800 dark:text-white mb-2">Passed Away Peacefully</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Surrounded by family at his home overlooking East Legon.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-medium text-gray-800 dark:text-white mb-4">Footages of His Celebration</h2>
+                <div class="w-20 h-0.5 bg-accent-silver-blue mx-auto"></div>
+            </div>
+
+            <div class="mb-12">
+                <h3 class="text-2xl font-serif text-gray-800 dark:text-white mb-4">One-Week Celebration</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6">
+                    A collection of videos and photos from the one-week celebration of Lucas's life, a time of reflection and remembrance.
+                </p>
+                <div class="memorial-card rounded-lg overflow-hidden hover-zoom">
+                    <div class="video-container">
+                        <iframe src="images/onew.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-2xl font-serif text-gray-800 dark:text-white mb-4">Funeral Day</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6">
+                    Footages from the funeral service and burial, as we bid a final farewell to a beloved father, and friend.
+                </p>
+                <div class="memorial-card rounded-lg overflow-hidden hover-zoom">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/YOUR_FUNERAL_VIDEO_ID_HERE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-medium text-gray-800 dark:text-white mb-4">Service Details</h2>
+                <div class="w-20 h-0.5 bg-accent-silver-blue mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <div class="memorial-card rounded-lg p-8 hover-zoom">
+                     <h3 class="text-2xl font-serif text-gray-800 dark:text-white mb-4">Directions</h3>
+                    <div class="space-y-4">
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Directions to Ghana Police Church, Accra (Near 37 Military Hospital)<br><br>
+                           <h4>📍 Landmark:</h4> The church is located directly behind the 37 Military Hospital in Accra, very close to the main 37 Roundabout on the Accra–Tema Motorway stretch.<br><br>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="memorial-card rounded-lg p-8 hover-zoom">
+                    <h3 class="text-2xl font-serif text-gray-800 dark:text-white mb-4">Memorial Service</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">Date</div>
+                            <div class="text-lg">Thursday, September 18, 2025</div>
+                        </div>
+                        <div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">Time</div>
+                            <div class="text-lg">7.00 A.M.</div>
+                        </div>
+                        <div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">Location</div>
+                            <div class="text-lg">The Ghana Police Church, Accra</div>
+                            <div class="text-gray-600 dark:text-gray-400 mb-4">Near 37 Military Hospital</div>
+                        </div>
+                        <div class="w-full h-64 rounded-md overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.6040854298165!2d-79.93922762366874!3d32.77800927366308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88fe627c28994539%3A0x86878b277b09930!2sGrace%20Church%20in%20Charleston!5e0!3m2!1sen!2sus!4v1700685600000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-medium text-gray-800 dark:text-white mb-4">Funeral Arrangements</h2>
+                <div class="w-20 h-0.5 bg-accent-silver-blue mx-auto"></div>
+                <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Details for the final arrangements to honor Mr. Lucas Brako Addo.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="memorial-card rounded-lg p-8 hover-zoom">
+                    <h3 class="text-xl font-serif text-gray-800 dark:text-white mb-2">Burial Service</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        The burial service will be held on Thursday, September 18, 2025, at The Ghana Police Church, Accra, at 7:00 A.M.
+                    </p>
+                </div>
+                <div class="memorial-card rounded-lg p-8 hover-zoom">
+                    <h3 class="text-xl font-serif text-gray-800 dark:text-white mb-2">Funeral Rite</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        The funeral rites will be held on Saturday, September 20, 2025, at his residence, 44 Nii Sai Road; East Legon near American House at 8:00 A.M.
+                    </p>
+                </div>
+                <div class="memorial-card rounded-lg p-8 hover-zoom">
+                    <h3 class="text-xl font-serif text-gray-800 dark:text-white mb-2">Attire</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Attire for Thursday, September 18, 2025 is All Black; for Saturday, September 20, 2025 is Black and White; and for Sunday, September 21, 2025 is All White.
+                    </p>
+                </div>
+                <div class="memorial-card rounded-lg p-8 hover-zoom">
+                    <h3 class="text-xl font-serif text-gray-800 dark:text-white mb-2">Internment</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        The interment will be a private burial on Thursday, September 18, 2025.
+                    </p>
+                </div>
+                <div class="memorial-card rounded-lg p-8 hover-zoom">
+                    <h3 class="text-xl font-serif text-gray-800 dark:text-white mb-2">Thanksgiving Service</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        A thanksgiving service will be held on Sunday, September 21, 2025, at The Ghana Police Church, Accra, at 7:30 A.M.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tribute Section (Carousel with Expandable Content) -->
+<section class="py-20 bg-white dark:bg-gray-900">
+  <div class="container mx-auto px-6 max-w-4xl">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-serif font-medium text-gray-800 dark:text-white mb-4">Tributes</h2>
+      <div class="w-20 h-0.5 bg-accent-silver-blue mx-auto"></div>
+    </div>
+
+    <!-- Carousel Container -->
+    <div class="relative">
+      <!-- Slides -->
+      <div id="tribute-carousel" class="overflow-hidden relative">
+        
+        <!-- Slide 1 -->
+        <div class="tribute-slide memorial-card rounded-lg p-8 hidden">
+          <h3 class="text-2xl font-serif text-gray-800 dark:text-white mb-4">Tributes from Brothers-in-law</h3>
+          <p class="text-gray-600 dark:text-gray-300 line-clamp-3 cursor-pointer" onclick="toggleTribute(this)">
+            It is with heavy hearts that we gather in spirit and memory to pay tribute to a man whose life left an indelible mark...
+          </p>
+          <div class="tribute-full hidden text-gray-600 dark:text-gray-300 mt-4">
+
+It is with heavy hearts that we gather in spirit and memory to pay tribute to a man whose life left an indelible mark on all who knew him—Lucas Brako Addo.<br><br>
+
+Mr. Addo was more than a brother-in-law. He was a brother in every sense of the word—dependable, wise, and quietly strong. His presence brought warmth into every room, his words carried both humor and wisdom, and his actions always reflected a generous and thoughtful heart.<br><br>
+
+He had a way of making people feel seen, valued, and heard. Whether through a gentle word of encouragement, a helping hand, or a shared laugh, Mr. Addo gave freely of himself without ever seeking recognition. He lived with humility and loved with quiet strength.<br><br>
+
+To know Mr. Addo was to witness integrity in action. He believed in doing what was right, standing by those he loved, and building bridges rather than walls. His loyalty to family and friends was unwavering, and his legacy lives on in the values he upheld and the lives he touched.<br><br>
+
+We mourn his passing, but we also celebrate his life—a life that, though ended too soon, was filled with purpose, love, and quiet heroism. Mr. Addo may no longer be with us in body, but his spirit remains in every memory we share, every life he impacted, and every lesson he taught us just by being who he was.<br><br>
+
+As we remember Mr. Addo, let us honor him not only with our words but with our lives. May we carry forward his kindness, his strength, and his love for others.<br><br>
+
+Rest well, dear Mr. Addo. You are deeply missed, endlessly loved, and forever remembered.
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="tribute-slide memorial-card rounded-lg p-8 hidden">
+          <h3 class="text-2xl font-serif text-gray-800 dark:text-white mb-4">A Tribute to My Beloved Husband</h3>
+          <p class="text-gray-600 dark:text-gray-300 line-clamp-3 cursor-pointer" onclick="toggleTribute(this)">
+            Lucas Brako Addo, Sunrise: June 12, 1944 – Sunset: July 13, 2025. Today, we gather with full hearts to honor...
+          </p>
+          <div class="tribute-full hidden text-gray-600 dark:text-gray-300 mt-4">
+Lucas Brako Addo<br><br>
+Sunrise: June 12, 1944 – Sunset: July 13, 2025<br><br>
+
+Today, we gather with full hearts to honor and celebrate the life of my beloved husband, Lucas Brako Addo—a man of deep faith, quiet strength, and unwavering devotion to his family and community.<br><br>
+
+Lucas was more than my husband. He was my best friend, my anchor, and my greatest blessing in this life. Through our years together, I was privileged to witness the depth of his wisdom, the gentleness of his spirit, and the strength of his character. He led with humility, loved without condition, and lived with purpose.<br><br>
+
+Together, we built a family that became his greatest joy and proudest legacy.<br><br>
+We were blessed with three children:<br>
+
+Felix Ohene Addo, whose calm strength reflects his father’s steady presence,
+Raymond Abankwa Addo, whose memory lives on in our hearts and now joins his father in eternal rest,
+and Cordelia Tenkramah Lamb, whose grace and kindness are a tribute to the love that shaped her.
+Lucas was a man who lived not for accolades, but for impact. He gave quietly, served faithfully, and stood firmly for what was right. Whether through a word of advice, a helping hand, or a prayer offered in silence, he left an indelible mark on all who knew him.<br><br>
+
+Though his earthly journey has ended, his spirit lives on in every life he touched. In the lessons he taught us. In the values he instilled. And in the love he so generously gave.<br><br>
+
+Lucas, my love—your absence leaves a void no words can fill.
+But I take comfort in the legacy you leave behind and the assurance that love never truly dies. You live on in our hearts, in our stories, and in the generations yet to come.<br><br>
+
+Rest well, my dear husband.<br>
+Until we meet again, may you find peace in the arms of the Almighty.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controls -->
+      <button onclick="prevTribute()" class="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-full">‹</button>
+      <button onclick="nextTribute()" class="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-full">›</button>
+    </div>
+  </div>
+</section>
+
+    <section class="relative py-32 bg-gray-50 dark:bg-gray-800 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="images/bbb.jpg" 
+                 alt="Soft focus sunset over harbor with silhouettes of sailboats" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/30"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="max-w-3xl mx-auto">
+                <div class="w-20 h-1 bg-accent-silver-blue mx-auto mb-8"></div>
+                <h2 class="text-4xl md:text-5xl font-serif font-medium text-white mb-6">"Also, if you all are thinking about scriptures to read at the service. One of his favorite scriptures with ( Psalm 23)"</h2>
+                <p class="text-xl font-light text-gray-200">— Mr Lucas Brako Addo's favorite scriptures in the Bible —</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-gray-900 text-gray-400">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-2xl font-serif text-white mb-2">Mr Lucas Brako Addo</div>
+                    <div class="text-sm">1944 A.B — 13th July 2025</div>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-accent-silver-blue transition duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="hover:text-accent-silver-blue transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="hover:text-accent-silver-blue transition duration-300">
+                        <i class="fas fa-share-alt"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-xs">© 2023 The Addo Family Memorial. All rights reserved.</p>
+                <p class="text-xs mt-2">Developed by <a href="https://abankwah4543.github.io/my-id-card/" target="_blank" class="hover:text-accent-silver-blue">Abankwah Joseph</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark-theme');
+            if (document.documentElement.classList.contains('dark-theme')) {
+                localStorage.setItem('theme', 'dark');
+                document.documentElement.classList.remove('light-theme');
+            } else {
+                localStorage.setItem('theme', 'light');
+                document.documentElement.classList.add('light-theme');
+            }
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme'))) {
+            document.documentElement.classList.add('dark-theme');
+            document.documentElement.classList.remove('light-theme');
+        } else {
+            document.documentElement.classList.add('light-theme');
+        }
+
+        // Page load animation
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.remove('opacity-0');
+            
+            // Animate elements sequentially
+            const animateElements = document.querySelectorAll('.animate-fadein');
+            animateElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+
+        // Gallery Filtering Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const galleryContainer = document.getElementById('gallery-container');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons and add to the clicked one
+                filterButtons.forEach(btn => btn.classList.remove('active-filter'));
+                this.classList.add('active-filter');
+
+                const filter = this.dataset.filter;
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category.includes(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Gallery Lightbox Functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                lightbox.style.display = 'flex';
+                lightboxImage.src = img.src;
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImage) {
+                lightbox.style.display = 'none';
+            }
+        });
+
+  // Tribute Carousel Logic
+  let currentTribute = 0;
+  const tributeSlides = document.querySelectorAll(".tribute-slide");
+
+  function showTribute(index) {
+    tributeSlides.forEach((slide, i) => {
+      slide.classList.add("hidden");
+      if (i === index) slide.classList.remove("hidden");
+    });
+  }
+
+  function prevTribute() {
+    currentTribute = (currentTribute - 1 + tributeSlides.length) % tributeSlides.length;
+    showTribute(currentTribute);
+  }
+
+  function nextTribute() {
+    currentTribute = (currentTribute + 1) % tributeSlides.length;
+    showTribute(currentTribute);
+  }
+
+  // Toggle Full Tribute Text
+  function toggleTribute(el) {
+    const fullText = el.nextElementSibling;
+    fullText.classList.toggle("hidden");
+    el.classList.toggle("hidden");
+  }
+
+  // Initialize
+  document.addEventListener("DOMContentLoaded", () => {
+    showTribute(currentTribute);
+  });
+    </script>
+</body>
+</html>
